@@ -1,0 +1,9 @@
+node_modules/
+dist/
+bin/
+models/
+*.part
+.env
+*.log
+API.txt
+*.code-workspace

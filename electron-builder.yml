@@ -1,0 +1,50 @@
+appId: com.codelight.app
+productName: CodeLight
+copyright: "Copyright © 2024"
+
+# Output directory
+directories:
+  output: dist
+  buildResources: assets
+
+# What to include in the app bundle
+files:
+  - src/**/*
+  - package.json
+  - "!node_modules/**"   # electron-builder handles these separately
+
+# Extra resources copied into the installed app (not in the asar archive)
+# so llama-server.exe can be spawned as a child process
+extraResources:
+  - from: bin/
+    to: bin/
+    filter:
+      - "**/*"
+  - from: models/
+    to: models/
+    filter:
+      - "**/*.gguf"
+
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: assets/icon.ico
+  # Sign the binary if you have a code-signing certificate:
+  # certificateFile: cert.pfx
+  # certificatePassword: ${CERT_PASSWORD}
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  installerIcon: assets/icon.ico
+  uninstallerIcon: assets/icon.ico
+  installerHeaderIcon: assets/icon.ico
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+
+# Auto-update feed (optional — fill in your GitHub repo)
+publish:
+  provider: github
+  owner: yourname
+  repo: codelight

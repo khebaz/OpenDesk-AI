@@ -1,0 +1,62 @@
+{
+  "name": "codelight",
+  "version": "0.1.0",
+  "description": "Coding AI launcher optimised for 4 GB Windows PCs",
+  "main": "src/main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "dev-hidden": "powershell -WindowStyle Hidden -Command \"electron .\"",
+    "build": "electron-builder --win --x64",
+    "download-llamacpp": "node scripts/download-llamacpp.js"
+  },
+  "keywords": [
+    "ai",
+    "llm",
+    "coding",
+    "local",
+    "low-ram"
+  ],
+  "author": "You",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^29.4.6",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "express": "^4.18.0",
+    "node-fetch": "^3.3.0"
+  },
+  "build": {
+    "appId": "com.codelight.app",
+    "productName": "CodeLight",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "extraResources": [
+      {
+        "from": "bin/",
+        "to": "bin/",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "models/",
+        "to": "models/",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "allowScripts": {
+    "electron@29.4.6": true
+  }
+}

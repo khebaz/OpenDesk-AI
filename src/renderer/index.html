@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';" />
+  <title>OpenDesk AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Custom titlebar (since frame: false) -->
+  <div id="titlebar">
+    <div id="titlebar-drag">
+      <span class="tbar-icon">⌨</span>
+      <span class="tbar-name">OpenDesk AI</span>
+    </div>
+    <div id="titlebar-btns">
+      <button id="btn-minimize" aria-label="Minimise">─</button>
+      <button id="btn-maximize" aria-label="Maximise">□</button>
+      <button id="close-btn" aria-label="Close">✕</button>
+    </div>
+  </div>
+
+  <!-- App shell — sidebar + main area -->
+  <div id="app">
+    <nav id="sidebar">
+      <div id="brand">
+        <div id="brand-icon">⌨</div>
+        <div>
+          <div id="brand-name">OpenDesk AI</div>
+          <div id="brand-sub">4 GB · Windows</div>
+        </div>
+      </div>
+
+      <div id="ram-section">
+        <div id="ram-row">
+          <span>RAM used</span>
+          <span id="ram-txt">— / — GB</span>
+        </div>
+        <div id="bar-bg"><div id="bar-fill"></div></div>
+        <div id="ram-note">Loading…</div>
+        <button id="btn-boost-ram" title="Free up RAM by closing heavy apps">⚡ Boost RAM</button>
+      </div>
+
+      <ul id="nav-list">
+        <li class="nav-item active" data-page="home">🏠 Models</li>
+        <li class="nav-item" data-page="chat">💬 Code chat</li>
+        <li class="nav-item" data-page="library">📦 Add models</li>
+        <li class="nav-item" data-page="files">📁 Files</li>
+        <li class="nav-item" data-page="settings">⚙ Settings</li>
+      </ul>
+
+      <div id="engine-status">
+        <span id="engine-dot" class="dot"></span>
+        <span id="engine-txt">Engine idle</span>
+      </div>
+
+      <!-- Support buttons -->
+      <div id="support-btns">
+        <button id="btn-coffee" title="Buy me a coffee ☕">
+          ☕ Buy me a coffee
+        </button>
+        <button id="btn-whatsapp" title="Chat on WhatsApp">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.554 4.103 1.523 5.824L0 24l6.344-1.498A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.647-.494-5.17-1.355l-.37-.22-3.768.89.938-3.667-.242-.378A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </button>
+      </div>
+
+      <!-- Credits -->
+      <div id="credits">
+        <span>Built by</span>
+        <strong>Kabelo Ramapulana</strong>
+      </div>
+    </nav>
+
+    <div id="main">
+      <div id="topbar">
+        <h1 id="page-title">Models</h1>
+      </div>
+
+      <div id="content">
+        <div id="page-home"  class="page active"></div>
+        <div id="page-chat"  class="page"></div>
+        <div id="page-library" class="page"></div>
+        <div id="page-settings" class="page"></div>
+        <div id="page-files" class="page"></div>
+      </div>
+
+      <div id="status-bar">
+        <div id="status-model">No model running</div>
+        <button id="btn-open-chat" disabled>💬 Code chat</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page templates injected by JS -->
+  <script src="app.js"></script>
+</body>
+</html>
